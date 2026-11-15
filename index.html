@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030206">
+  <title>Biblioteca CBTis 5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mystyles.css">
+</head>
+<body>
+  <header id="header">
+    <div class="nav-container">
+      <a href="#inicio" class="logo">Biblioteca <span>CBTis 5</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#inicio" class="active">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#inventario">Inventario</a></li>
+          <li><a href="#horarios">Horarios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="hero-badge">Centro de Bachillerato Tecnológico Industrial y de Servicios No. 5</div>
+        <h1>Biblioteca <span>CBTis 5</span></h1>
+        <p>Un espacio de conocimiento, investigación y crecimiento académico para toda la comunidad estudiantil.</p>
+        <div class="hero-buttons">
+          <a href="#catalogo" class="btn btn-primary">Explorar catálogo</a>
+          <a href="#horarios" class="btn btn-outline">Ver horarios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div class="container">
+        <h2 class="section-title">Nuestra Biblioteca</h2>
+        <p class="section-subtitle">Más que un espacio de libros, un centro de aprendizaje y encuentro</p>
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>Conocimiento al alcance de todos</h3>
+            <p>La Biblioteca del CBTis 5 es un espacio para consultar información, estudiar y desarrollar proyectos académicos.</p>
+            <p>El catálogo digital facilita la búsqueda de libros por título, autor, tema o especialidad.</p>
+            <div class="stats">
+              <div class="stat-item"><strong>40+</strong><span>Títulos del catálogo</span></div>
+              <div class="stat-item"><strong>4</strong><span>Áreas de consulta</span></div>
+              <div class="stat-item"><strong>24/7</strong><span>Catálogo en línea</span></div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img src="assets/biblioteca-interior.png" alt="Estanterías de libros y área de lectura de la Biblioteca CBTis 5">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <h2 class="section-title">Servicios</h2>
+        <p class="section-subtitle">Recursos para tu desarrollo académico</p>
+        <div class="services-grid">
+          <article class="service-card"><div class="service-icon">📚</div><h3>Préstamo de material</h3><p>Consulta libros y materiales disponibles en la biblioteca escolar.</p></article>
+          <article class="service-card"><div class="service-icon">💻</div><h3>Acceso digital</h3><p>Busca referencias y portadas de libros desde cualquier dispositivo con internet.</p></article>
+          <article class="service-card"><div class="service-icon">👥</div><h3>Salas de estudio</h3><p>Espacios para el trabajo individual y colaborativo.</p></article>
+          <article class="service-card"><div class="service-icon">🔍</div><h3>Orientación bibliográfica</h3><p>Apoyo para localizar fuentes y elaborar trabajos de investigación.</p></article>
+          <article class="service-card"><div class="service-icon">🖨️</div><h3>Impresión y escaneo</h3><p>Consulta en la biblioteca la disponibilidad de estos servicios.</p></article>
+          <article class="service-card"><div class="service-icon">📅</div><h3>Talleres y eventos</h3><p>Actividades académicas, talleres y pláticas para estudiantes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+      <div class="container">
+        <h2 class="section-title">Catálogo de libros</h2>
+        <p class="section-subtitle">Busca por título, autor o especialidad. Las portadas se cargan desde Google Books cuando están disponibles.</p>
+        <label class="search-label" for="bookSearch">Buscar en el catálogo</label>
+        <input type="search" id="bookSearch" class="book-search" placeholder="Ej. Biología, Campbell, Química..." autocomplete="off">
+        <div class="catalog-filters" aria-label="Filtrar por categoría">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="tecnologia">Tecnología</button>
+          <button class="filter-btn" data-filter="ciencias">Ciencias</button>
+          <button class="filter-btn" data-filter="humanidades">Humanidades</button>
+          <button class="filter-btn" data-filter="literatura">Literatura</button>
+        </div>
+        <p id="resultsCount" class="results-count" aria-live="polite"></p>
+        <div class="books-grid" id="booksGrid"></div>
+      </div>
+    </section>
+
+    <section class="inventory" id="inventario">
+      <div class="container">
+        <h2 class="section-title">Inventario de libros</h2>
+        <p class="section-subtitle">Controla las existencias de la biblioteca. Los cambios se guardan automáticamente en este navegador.</p>
+
+        <div class="inventory-summary">
+          <article class="inventory-stat">
+            <span class="inventory-stat-icon">📚</span>
+            <div><strong id="inventoryTitles">0</strong><span>Títulos registrados</span></div>
+          </article>
+          <article class="inventory-stat">
+            <span class="inventory-stat-icon">📦</span>
+            <div><strong id="inventoryCopies">0</strong><span>Ejemplares disponibles</span></div>
+          </article>
+          <article class="inventory-stat">
+            <span class="inventory-stat-icon">⚠️</span>
+            <div><strong id="inventoryEmpty">0</strong><span>Sin existencias</span></div>
+          </article>
+          <article class="inventory-stat">
+            <span class="inventory-stat-icon">📝</span>
+            <div><strong id="activeLoansCount">0</strong><span>Préstamos activos</span></div>
+          </article>
+        </div>
+
+        <label class="search-label" for="inventorySearch">Buscar en el inventario</label>
+        <input type="search" id="inventorySearch" class="book-search" placeholder="Ej. Biología, Campbell, Química..." autocomplete="off">
+
+        <p class="inventory-note">Usa <strong>−</strong> para registrar una salida y <strong>+</strong> para registrar una entrada. Las existencias muestran los ejemplares disponibles para préstamo.</p>
+        <div class="inventory-table-wrap">
+          <table class="inventory-table">
+            <thead>
+              <tr>
+                <th>Libro</th>
+                <th>Área</th>
+                <th>Existencias</th>
+                <th>Actualizar</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryBody"></tbody>
+          </table>
+        </div>
+        <p id="inventoryMessage" class="inventory-message" role="status" aria-live="polite"></p>
+
+        <h3 class="loans-title">Registro de préstamos activos</h3>
+        <p class="inventory-note">Aquí aparecen los libros prestados y quién los tiene. Al devolverlos, selecciona el botón de devolución.</p>
+        <div class="inventory-table-wrap">
+          <table class="inventory-table loans-table">
+            <thead>
+              <tr>
+                <th>Libro</th>
+                <th>Estudiante</th>
+                <th>Fecha de préstamo</th>
+                <th>Fecha de devolución</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="loansBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" id="horarios">
+      <div class="container info-grid">
+        <div class="info-card">
+          <h3>Horarios de atención</h3>
+          <ul class="hours-list">
+            <li><span>Lunes a viernes</span><strong>7:00 – 19:00 hrs</strong></li>
+            <li><span>Sábados</span><strong>cerrado</strong></li>
+            <li><span>Domingos</span><strong>Cerrado</strong></li>
+            <li><span>Días festivos</span><strong>Consultar</strong></li>
+          </ul>
+        </div>
+        <div class="info-card" id="contacto">
+          <h3>Contacto</h3>
+          <div class="contact-item"><span>📍</span><div><strong>Ubicación</strong><br>CBTis No. 5 · Biblioteca escolar<br>Consulta la ubicación con tu plantel.</div></div>
+          <div class="contact-item"><span>📧</span><div><strong>Correo</strong><br>Verifica el correo oficial de la biblioteca con tu plantel.</div></div>
+          <div class="contact-item"><span>🕒</span><div><strong>Atención</strong><br>Lunes a viernes en horario de servicio.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Biblioteca <span>CBTis 5</span></div>
+    <p>Centro de Bachillerato Tecnológico Industrial y de Servicios No. 5</p>
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#catalogo">Catálogo</a><a href="#inventario">Inventario</a><a href="#horarios">Horarios</a>
+    </div>
+    <p class="copyright">© 2026 Biblioteca CBTis 5. Proyecto escolar.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
